@@ -8,7 +8,8 @@ args = {x:y for x, y in re.findall(r'--(\S+)\s+(\S+)', ''.join([x + ' ' for x in
 # -- These are the only arguments we use currently.  Arguments can be specified in any order.
 target_template_name = args.get('template', None)
 project_root = args.get('root', None)
-class_name = args.get('name', None).lower()
+class_name = args.get('name', None)
+snake_case_class_name = re.sub(r'(?<!^)(?=[A-Z])', '_', class_name).lower()
 plato_dir = os.path.dirname(sys.argv[0])
 
 # -- If no class name is given, exit.
@@ -67,8 +68,8 @@ if HEADER_DESTINATION[-1] != '/':
 if SOURCE_DESTINATION[-1] != '/':
   SOURCE_DESTINATION += '/'
 
-target_header_file = os.path.join(HEADER_DESTINATION, '%s.h' % class_name)
-target_source_file = os.path.join(SOURCE_DESTINATION, '%s.cpp' % class_name)
+target_header_file = os.path.join(HEADER_DESTINATION, '%s.h' % snake_case_class_name)
+target_source_file = os.path.join(SOURCE_DESTINATION, '%s.cpp' % snake_case_class_name)
 
 check_proceed = None
 
@@ -104,12 +105,12 @@ with open(os.path.join(template_dir, template_source), 'r') as fp:
 
 header_str = header_str\
   .replace('__PLATO_VAR_CLASSNAME__', class_name.upper())\
-    .replace('__PLATO_VAR_Classname__', class_name.capitalize())\
+    .replace('__PLATO_VAR_Classname__', class_name)\
       .replace('__PLATO_VAR_classname__', class_name.lower())
 
 source_str = source_str\
   .replace('__PLATO_VAR_CLASSNAME__', class_name.upper())\
-    .replace('__PLATO_VAR_Classname__', class_name.capitalize())\
+    .replace('__PLATO_VAR_Classname__', class_name)\
       .replace('__PLATO_VAR_classname__', class_name.lower())\
         .replace('__PLATO_VAR_header_path__', target_header_file.replace(project_header_root, ''))
 
