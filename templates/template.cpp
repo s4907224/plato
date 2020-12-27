@@ -7,14 +7,14 @@ gbox::__PLATO_VAR_Classname__::__PLATO_VAR_Classname__()
   m_ID = m_instance_counter++;
 
   #ifdef DEBUG_PRINTS
-  std::cout<<"Ctor called for __PLATO_VAR_Classname__ with ID "<<m_ID<<" @"<<std::hex<<this<<'\n';
+  std::cout<<"Ctor called for __PLATO_VAR_Classname__ with ID "<<m_ID<<" @"<<std::hex<<this<<std::dec<<'\n';
   #endif
 }
 
 gbox::__PLATO_VAR_Classname__::~__PLATO_VAR_Classname__()
 {
   #ifdef DEBUG_PRINTS  
-  std::cout<<"Dtor called for __PLATO_VAR_Classname__ with ID "<<m_ID<<" @"<<std::hex<<this<<'\n';
+  std::cout<<"Dtor called for __PLATO_VAR_Classname__ with ID "<<m_ID<<" @"<<std::hex<<this<<std::dec<<'\n';
   #endif
 }
 
