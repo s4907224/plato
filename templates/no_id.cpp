@@ -2,8 +2,6 @@
 
 gbox::__PLATO_VAR_Classname__::__PLATO_VAR_Classname__()
 {
-  m_ID = m_instance_counter++;
-
   #ifdef DEBUG_PRINTS
   std::cout<<"Ctor called for __PLATO_VAR_Classname__ @"<<std::hex<<this<<std::dec<<'\n';
   #endif
@@ -18,8 +16,6 @@ gbox::__PLATO_VAR_Classname__::~__PLATO_VAR_Classname__()
 
 gbox::__PLATO_VAR_Classname__::__PLATO_VAR_Classname__(const __PLATO_VAR_Classname__& ___PLATO_VAR_classname___other)
 {
-  m_ID = m_instance_counter++;
-
   #ifdef DEBUG_PRINTS
   std::cout<<"Copy ctor called for __PLATO_VAR_Classname__ and __PLATO_VAR_Classname__\n";
   #endif
